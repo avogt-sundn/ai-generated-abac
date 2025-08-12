@@ -1,0 +1,41 @@
+# Maven/Java
+/target/
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.ear
+
+# IDEs
+/.idea/
+*.iml
+*.ipr
+*.iws
+/.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Quarkus
+/.quarkus/
+
+# Test reports
+/surefire-reports/
+
+# Misc
+*.swp
+*.swo
+
+# Node/npm (if present)
+/node_modules/
+
+# Backup
+*.bak
+
+# Jupyter
+*.ipynb_checkpoints/
+
+# History
+.history/
