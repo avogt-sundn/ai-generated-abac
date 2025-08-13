@@ -1,10 +1,11 @@
 package com.example.abac.service;
 
+import java.util.List;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import java.util.List;
 
 @ApplicationScoped
 public class AttributeService {
@@ -12,7 +13,8 @@ public class AttributeService {
     @PersistenceContext
     EntityManager em;
 
-    public String getAttribute(String targetType, String subjectId, String actionId, String resourceId, String contextId, String key) {
+    public String getAttribute(String targetType, String subjectId, String actionId, String resourceId,
+            String contextId, String key) {
         String sql = null;
         switch (targetType) {
             case "subject":
@@ -33,12 +35,14 @@ public class AttributeService {
     }
 
     private String singleResultString(String jpql, String id, String key) {
-        if (id == null) return null;
+        if (id == null)
+            return null;
         Query q = em.createQuery(jpql);
         q.setParameter("id", id);
         q.setParameter("key", key);
         List<?> list = q.getResultList();
-        if (list.isEmpty()) return null;
+        if (list.isEmpty())
+            return null;
         return (String) list.get(0);
     }
 }

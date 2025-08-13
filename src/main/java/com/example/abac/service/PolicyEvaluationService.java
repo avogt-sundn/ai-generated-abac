@@ -1,13 +1,15 @@
 package com.example.abac.service;
 
+import java.util.List;
+import java.util.Objects;
+
 import com.example.abac.entity.Policy;
 import com.example.abac.entity.PolicyEffect;
 import com.example.abac.entity.PolicyRule;
 import com.example.abac.repo.PolicyRepository;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import java.util.List;
-import java.util.Objects;
 
 @ApplicationScoped
 public class PolicyEvaluationService {
@@ -44,11 +46,15 @@ public class PolicyEvaluationService {
     }
 
     private boolean compare(String actual, String op, String expected) {
-        if (actual == null) return false;
+        if (actual == null)
+            return false;
         switch (op) {
-            case "=": return Objects.equals(actual, expected);
-            case "!=": return !Objects.equals(actual, expected);
-            default: return false;
+            case "=":
+                return Objects.equals(actual, expected);
+            case "!=":
+                return !Objects.equals(actual, expected);
+            default:
+                return false;
         }
     }
 }
