@@ -12,7 +12,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
-public class PolicyEvaluationService {
+public class PolicyEvaluationService implements PolicyEvaluator {
 
     @Inject
     PolicyRepository policyRepo;
@@ -20,6 +20,7 @@ public class PolicyEvaluationService {
     @Inject
     AttributeService attrService;
 
+    @Override
     public boolean isAllowed(String subjectId, String actionId, String resourceId, String contextId) {
         List<Policy> policies = policyRepo.listAll();
         boolean anyAllow = false;
